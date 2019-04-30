@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block css %}
+.footer{
+    display:flex;
+    justify-content:space-around;
+    }
+
+{% endblock %}
+{% block body %}
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{ post.title }}</h3><p class="text-muted">{{ post.createAt|date("d-m-Y") }}</p>
+                <p class="card-text">{{ post.content }}</p>
+                <div class="footer">
+                    <a href="#" class="btn btn-primary">Ver Post</a>
+                    {% if user == post.user %}
+                        <a href="#" class="btn btn-success">Editar mi Post</a>
+                    {% else %}
+                        <a href="#" class="btn btn-info">Mas de {{ post.author }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock %}
